@@ -2,13 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class PersonalLSystemMat : MonoBehaviour {
+public class PersonalLSystem : MonoBehaviour {
 
     private List<string> variables = new List<string>();
     private List<string> constants = new List<string>();
     public string axiom;
     private string rule1, rule2;
-    private int recur = 5; //TODO: value zero gives nullref as parent is null, fix
+    private int recur = 3; //TODO: value zero gives nullref as parent is null, fix
 
     //private List<string> totalTreeForm = new List<string>();
     // Use this for initialization
@@ -20,13 +20,19 @@ public class PersonalLSystemMat : MonoBehaviour {
         axiom = "0";
         rule1 = "11"; //if number is 1 -> 11
         rule2 = "1[0]0"; //if number is 0 -> 1[0]0
-        //CreateTreeStructure();
+		Debug.Log("Run");
+        Debug.Log(CreateTreeStructure());
     }
 	
 	// Update is called once per frame
 	void Update () {
-	    
+
+
 	}
+	public void CreateEnity(Vector3 position){
+		Debug.Log(CreateTreeStructure());
+	}
+
     public string CreateTreeStructure() {
         for (int i = 0; i < recur; i++) { //Runs the number of chosen iterations
             string tmpAxiom = "";

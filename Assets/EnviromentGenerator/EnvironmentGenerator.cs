@@ -8,6 +8,12 @@ public class EnvironmentGenerator : MonoBehaviour {
 
 	public int sizeX = 10;
 	public int sizeY = 10;
+	
+	public EntityCreator yellowEntity;
+
+	public EntityCreator blueEntity;
+
+	public EntityCreator greenEntity;
 
 	
 	public List<List<int>> map;
@@ -30,8 +36,6 @@ public class EnvironmentGenerator : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-
-	
 	}
 	
 	// Update is called once per frame
@@ -170,7 +174,7 @@ public class EnvironmentGenerator : MonoBehaviour {
 
 				if(gameObject.GetComponent<Terrain>() != null){
 					Vector3 startPosZ = Terrain.activeTerrain.SampleHeight(startPosX+startPosY) * new Vector3(0.0f, 1.0f, 0.0f);
-					Gizmos.DrawSphere(startPosX+startPosY + startPosZ,2.0f / ( (sizeX+sizeY)/2) + (Vector3.Distance(control1,control2)/((sizeX+sizeY)*2)));
+					Gizmos.DrawSphere(startPosX+startPosY + startPosZ,2.0f / ( (sizeX+sizeY)/2) + (Vector3.Distance(control1,control2)/((sizeX+sizeY)*3)));
 				}
            		else{
 					Gizmos.DrawSphere(startPosX+startPosY,1.0f / ( (sizeX+sizeY)/2)  );
@@ -210,23 +214,37 @@ public class EnvironmentGenerator : MonoBehaviour {
 
 		for(int y = 0 ; y < cordinates.Count ; y ++){
 			for(int x = 0 ; x < cordinates[y].Count ; x ++){	
-				GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-				sphere.transform.position = cordinates[y][x];
-				sphere.transform.parent = parent.transform;
-				float size = (2.0f / ( (sizeX+sizeY)/2) + (Vector3.Distance(control1Obj.transform.position,control2Obj.transform.position)/((sizeX+sizeY)*2))) + 0.0f;
-				sphere.transform.localScale = new Vector3(size,size,size);
+				GameObject gereratedGameObject = null;
 
 
-				if(map[y][x] == 1)
-					sphere.GetComponent<Renderer>().material.color = Color.green;
-				else if(map[y][x] == 2)
-						sphere.GetComponent<Renderer>().material.color = Color.yellow;
-				else if(map[y][x] == 3)
-						sphere.GetComponent<Renderer>().material.color = Color.blue;
-				else
-						sphere.GetComponent<Renderer>().material.color = Color.gray;
-			
 
+
+				if(map[y][x] == 1){
+					if(greenEntity != null){
+						gereratedGameObject = greenEntity.create(cordinates[y][x]);
+						gereratedGameObject.GetComponent<Renderer>().material.color = Color.green;
+					}
+				}
+				else if(map[y][x] == 2){
+					if(yellowEntity != null){
+						gereratedGameObject = yellowEntity.create(cordinates[y][x]);
+						gereratedGameObject.GetComponent<Renderer>().material.color = Color.yellow;
+					}
+				}
+				else if(map[y][x] == 3){
+					if(blueEntity != null){
+						gereratedGameObject = blueEntity.create(cordinates[y][x]);
+						gereratedGameObject.GetComponent<Renderer>().material.color = Color.blue;
+					}
+				}
+				else{
+					//gereratedGameObject.GetComponent<Renderer>().material.color = Color.gray;
+				}
+				if(gereratedGameObject != null){
+					gereratedGameObject.transform.parent = parent.transform;
+					float size = (2.0f / ( (sizeX+sizeY)/2) + (Vector3.Distance(control1Obj.transform.position,control2Obj.transform.position)/((sizeX+sizeY)*2))) + 0.0f;
+					gereratedGameObject.transform.localScale = new Vector3(size,size,size);
+				}
 
 			}
 		}

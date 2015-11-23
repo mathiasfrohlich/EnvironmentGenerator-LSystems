@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class PersonalLSystemMat : MonoBehaviour {
+public class PersonalLSystem : MonoBehaviour {
 
     private List<string> variables = new List<string>();
     private List<string> constants = new List<string>();

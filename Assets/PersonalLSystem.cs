@@ -8,7 +8,7 @@ public class PersonalLSystem : MonoBehaviour {
     private List<string> constants = new List<string>();
     public string axiom;
     private string rule1, rule2;
-    private int recur = 3; //TODO: value zero gives nullref as parent is null, fix
+    private int recur = 5; //TODO: value zero gives nullref as parent is null, fix
 
     //private List<string> totalTreeForm = new List<string>();
     // Use this for initialization

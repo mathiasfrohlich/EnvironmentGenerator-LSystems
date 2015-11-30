@@ -25,8 +25,11 @@ public class TreeCreator : EntityCreator{
             DestroyImmediate(totalTree);*/
         //CreateTree(_personalSystem.CreateTreeStructure());
         //_personalSystem.axiom = "0";
-
-        return _drawTree.CreateTree(_personalSystem.CreateTreeStructure(), position, goBranch);
+        GameObject tmpTree = _drawTree.CreateTree(_personalSystem.CreateTreeStructure(), position, goBranch);
+        //DestroyImmediate(GameObject.FindGameObjectWithTag("Source"));
+        
+        tmpTree.tag = "Placed Tree";
+        return tmpTree;
     }
     void Start()
     {

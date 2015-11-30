@@ -58,11 +58,13 @@ public class DrawTree : MonoBehaviour {
                         branch.transform.rotation = parent.transform.rotation;    //branch.transform.Rotate(branch.transform.rotation.eulerAngles.x, branch.transform.rotation.eulerAngles.y, rot);
                         branch.transform.position = branch.transform.position + branch.transform.up;
                         branch.transform.parent = parent.transform;
+                        branch.name = "EndBranch";
                         GameObject leaf = GameObject.CreatePrimitive(PrimitiveType.Cube);
                         leaf.transform.localScale /= 2;
                         //leaf.transform.position = branch.transform.position;
                         leaf.transform.position = branch.transform.FindChild("TopPos").position;
-
+                        //leaf.transform.position = leaf.transform.position + new Vector3(0, leaf.transform.localScale.y,0) ;
+                        leaf.name = "Leaf";
                         leaf.transform.rotation = branch.transform.rotation;
                         //leaf.transform.position += (leaf.transform.up);
                         leaf.transform.parent = branch.transform;
@@ -75,9 +77,11 @@ public class DrawTree : MonoBehaviour {
                 case "1":
                     {
                         GameObject branch = GameObject.Instantiate(goBranch) as GameObject; //GameObject branch = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+                        branch.name = "Branch";
                         if (parent == null) { //Used first time as parent is empty
                             parent = branch.gameObject;
                             branch.tag = "Tree";
+                            branch.name = "Tree";
                             branch.transform.position = treePosition;
                             //parent.transform.position = treePosition;
                         }
@@ -139,7 +143,10 @@ public class DrawTree : MonoBehaviour {
             }
         }
         totalTree = GameObject.FindGameObjectWithTag("Tree");
-        DestroyImmediate(GameObject.FindWithTag("Source").gameObject);
+        //DestroyImmediate(GameObject.FindWithTag("Source").gameObject);
+        parent = null;
+        angleHasChanged = false;
+        //Debug.Log("Splitparents should be 0: " + splitParents.Count + " and currentpushes should be 0: "  + currentPushes);
         return totalTree;
     }
 }

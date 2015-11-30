@@ -11,4 +11,15 @@ public class ExampleCreator : EntityCreator{
 
 		return capsule;
 	}
+
+	
+	public override void setUp ()
+	{
+		//Use to set up something before creation
+	}
+	
+	public override void tearDown ()
+	{
+		//Use to teatdown after creation
+	}
 }

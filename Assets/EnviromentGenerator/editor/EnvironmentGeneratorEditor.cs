@@ -26,6 +26,18 @@ public class EnvironmentGeneratorEditor : Editor {
 
 				}
 			}
+			if(myScript.parent != null){
+				if(GUILayout.Button("Undo")){
+					DestroyImmediate(myScript.parent);
+
+					myScript.control1Obj = new GameObject("ControlPoint1");
+					myScript.control2Obj = new GameObject("ControlPoint2");
+					myScript.control2Obj.AddComponent(typeof(MeshRenderer));
+					myScript.control2Obj.transform.position = myScript.lastPos;
+
+					SceneView.RepaintAll();
+				}
+			}
 		}
 		if(myScript.control1Obj != null){
 			if(myScript.map == null){
@@ -71,5 +83,6 @@ public class EnvironmentGeneratorEditor : Editor {
 
 
 	} 
+
 
 }

@@ -3,6 +3,8 @@ using System.Collections;
 
 public interface IEntityCreator {
 
-	GameObject create(Vector3 position) ;
+	GameObject create(Vector3 position);
+	void setUp();
+	void tearDown();
 
 }

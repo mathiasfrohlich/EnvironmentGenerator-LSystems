@@ -214,10 +214,29 @@ public class EnvironmentGenerator : MonoBehaviour {
 
 		for(int y = 0 ; y < cordinates.Count ; y ++){
 			for(int x = 0 ; x < cordinates[y].Count ; x ++){	
+				
+				if(map[y][x] == 1){
+					if(greenEntity != null){
+						gereratedGameObject = greenEntity.create(cordinates[y][x]);
+					}
+				}
+				else if(map[y][x] == 2){
+					if(yellowEntity != null){
+						gereratedGameObject = yellowEntity.create(cordinates[y][x]);
+					}
+				}
+				else if(map[y][x] == 3){
+					if(blueEntity != null){
+						gereratedGameObject = blueEntity.create(cordinates[y][x]);
+					}
+				}
+			}
+		}
+
+
+		for(int y = 0 ; y < cordinates.Count ; y ++){
+			for(int x = 0 ; x < cordinates[y].Count ; x ++){	
 				GameObject gereratedGameObject = null;
-
-
-
 
 				if(map[y][x] == 1){
 					if(greenEntity != null){
@@ -246,6 +265,27 @@ public class EnvironmentGenerator : MonoBehaviour {
 					gereratedGameObject.transform.localScale = new Vector3(size,size,size);
 				}
 
+			}
+		}
+
+		for(int y = 0 ; y < cordinates.Count ; y ++){
+			for(int x = 0 ; x < cordinates[y].Count ; x ++){	
+
+				if(map[y][x] == 1){
+					if(greenEntity != null){
+						gereratedGameObject = greenEntity.create(cordinates[y][x]);
+					}
+				}
+				else if(map[y][x] == 2){
+					if(yellowEntity != null){
+						gereratedGameObject = yellowEntity.create(cordinates[y][x]);
+					}
+				}
+				else if(map[y][x] == 3){
+					if(blueEntity != null){
+						gereratedGameObject = blueEntity.create(cordinates[y][x]);
+					}
+				}
 			}
 		}
 

@@ -3,23 +3,30 @@ using System.Collections;
 
 public class GrassCreator : EntityCreator{
 
+	public GameObject DefaultGrass;
+
 	public override GameObject create (Vector3 position)
 	{
-		Debug.Log("Create Grass");
-		GameObject capsule = GameObject.CreatePrimitive(PrimitiveType.Cube);
-		capsule.transform.position = position;
 
+		GameObject grassEntity = Instantiate(DefaultGrass,position,new Quaternion()) as GameObject;
 
-		Terrain t = gameObject.GetComponent<Terrain>();
+		grassEntity.name = "GrassEntity";
 
-		float threshold = 0.5f;
-
-		DetailMapCutoff(t,threshold);
+//		Debug.Log("Create Grass");
+//		GameObject capsule = GameObject.CreatePrimitive(PrimitiveType.Cube);
+//		capsule.transform.position = position;
+//
+//
+//		Terrain t = gameObject.GetComponent<Terrain>();
+//
+//		float threshold = 0.5f;
+//
+//		DetailMapCutoff(t,threshold);
 
 
 //		gameObject.GetComponent<Terrain>().terrainData.SetDetailLayer(position.x,position.y,LayerMask.GetMask("Default"))
 
-		return capsule;
+		return grassEntity;
 	}
 
 	public override void setUp ()

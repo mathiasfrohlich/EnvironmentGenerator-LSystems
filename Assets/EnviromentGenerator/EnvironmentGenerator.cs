@@ -88,13 +88,7 @@ public class EnvironmentGenerator : MonoBehaviour {
 			if(map != null)
 				DebugDrawColors(control1Obj.transform.position,control2Obj.transform.position);
 		}
-//		if(gameObject.GetComponent<Terrain>() != null){
-//			Vector3 tempCon1 = control1.transform.position;
-//			Vector3 tempCon2 = control2.transform.position;
-//
-//			control1.transform.position = new Vector3(tempCon1.x,Terrain.activeTerrain.SampleHeight(tempCon1),tempCon1.y);
-//			control2.transform.position = new Vector3(tempCon2.x,Terrain.activeTerrain.SampleHeight(tempCon2),tempCon2.y);
-//		}
+
 
 	}
 	
@@ -212,26 +206,9 @@ public class EnvironmentGenerator : MonoBehaviour {
 		}
 
 
-		for(int y = 0 ; y < cordinates.Count ; y ++){
-			for(int x = 0 ; x < cordinates[y].Count ; x ++){	
-				
-				if(map[y][x] == 1){
-					if(greenEntity != null){
-						greenEntity.setUp();
-					}
-				}
-				else if(map[y][x] == 2){
-					if(yellowEntity != null){
-						yellowEntity.setUp();
-					}
-				}
-				else if(map[y][x] == 3){
-					if(blueEntity != null){
-						blueEntity.setUp();
-					}
-				}
-			}
-		}
+
+		callSetUp(cordinates);
+
 
 
 		for(int y = 0 ; y < cordinates.Count ; y ++){
@@ -241,13 +218,11 @@ public class EnvironmentGenerator : MonoBehaviour {
 				if(map[y][x] == 1){
 					if(greenEntity != null){
 						gereratedGameObject = greenEntity.create(cordinates[y][x]);
-						gereratedGameObject.GetComponent<Renderer>().material.color = Color.green;
 					}
 				}
 				else if(map[y][x] == 2){
 					if(yellowEntity != null){
 						gereratedGameObject = yellowEntity.create(cordinates[y][x]);
-						gereratedGameObject.GetComponent<Renderer>().material.color = Color.yellow;
 					}
 				}
 				else if(map[y][x] == 3){
@@ -268,9 +243,37 @@ public class EnvironmentGenerator : MonoBehaviour {
 			}
 		}
 
-		for(int y = 0 ; y < cordinates.Count ; y ++){
-			for(int x = 0 ; x < cordinates[y].Count ; x ++){	
 
+		callTearDown(cordinates);
+
+	}
+
+	void callSetUp(List<List<Vector3>> cordinates){
+		for(int y = 0 ; y < cordinates.Count ; y ++)
+			for(int x = 0 ; x < cordinates[y].Count ; x ++){	
+				
+				if(map[y][x] == 1){
+					if(greenEntity != null){
+						greenEntity.setUp();
+					}
+				}
+				else if(map[y][x] == 2){
+					if(yellowEntity != null){
+						yellowEntity.setUp();
+					}
+				}
+				else if(map[y][x] == 3){
+					if(blueEntity != null){
+						blueEntity.setUp();
+					}
+				}
+			}
+	}
+
+	void callTearDown(List<List<Vector3>> cordinates){
+		for(int y = 0 ; y < cordinates.Count ; y ++)
+			for(int x = 0 ; x < cordinates[y].Count ; x ++){	
+				
 				if(map[y][x] == 1){
 					if(greenEntity != null){
 						greenEntity.tearDown();
@@ -287,8 +290,7 @@ public class EnvironmentGenerator : MonoBehaviour {
 					}
 				}
 			}
-		}
-
+		
 	}
 
 }

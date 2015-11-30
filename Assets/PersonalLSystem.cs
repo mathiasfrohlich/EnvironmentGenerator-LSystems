@@ -33,6 +33,7 @@ public class PersonalLSystem : MonoBehaviour {
         rule2 = "1[0]0"; //if number is 0 -> 1[0]0
         for (int i = 0; i < recur; i++) { //Runs the number of chosen iterations
             string tmpAxiom = "";
+            //rule2 += "[0]0]"; //adds another branching each generation
             for (int j = 0; j < axiom.Length; j++) { //Runs dependend on the size of current tree
                 string tmpString = axiom.Substring(j, 1);
                 switch (tmpString) {

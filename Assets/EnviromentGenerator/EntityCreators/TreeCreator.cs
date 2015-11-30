@@ -9,6 +9,7 @@ public class TreeCreator : EntityCreator{
     //private GameObject totalTree;
     private GameObject goBranch;
 
+
     public override void setUp()
     {
         //throw new NotImplementedException();
@@ -42,6 +43,8 @@ public class TreeCreator : EntityCreator{
         //DestroyImmediate(GameObject.FindGameObjectWithTag("Source"));
         
         tmpTree.tag = "Placed Tree";
+        //tmpTree.transform.localScale.Set(tmpTree.transform.localScale.x*0.5f, tmpTree.transform.localScale.y*0.5f, tmpTree.transform.localScale.z*0.5f);
+        //tmpTree.transform.localScale.Scale(new Vector3(1,1,1), new Vector3(0.5f, 0.5f, 0.5f));
         return tmpTree;
     }
     void Start()

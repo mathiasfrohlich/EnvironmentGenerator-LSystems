@@ -14,25 +14,25 @@ public class DrawTree : MonoBehaviour {
     private bool angleHasChanged = false;
     private PersonalLSystem _personalSystem;
     private Vector3 offset = new Vector3(0, 1, 0);
-    private GameObject goBranch;
+    //private GameObject goBranch;
 	// Use this for initialization
-	void Start () {
+	/*void Start () {
         totalTree = new GameObject();
         _personalSystem = gameObject.GetComponent<PersonalLSystem>();
         goBranch = GameObject.CreatePrimitive(PrimitiveType.Capsule);
         CreateBranch();
-    }
+    }*/
 	
 	// Update is called once per frame
-	void Update () {
+	/*void Update () {
         if (Input.GetKeyDown(KeyCode.Mouse0)){
             if (totalTree != null)
                 DestroyImmediate(totalTree);
-            CreateTree(_personalSystem.CreateTreeStructure());
+            CreateTree(_personalSystem.CreateTreeStructure(), Vector3.zero);
             _personalSystem.axiom = "0";
         }
-    }
-    private void CreateBranch() {
+    }*/
+    /*private void CreateBranch() {
         GameObject top = new GameObject();
         GameObject low = new GameObject();
         top.name = "TopPos";
@@ -44,8 +44,8 @@ public class DrawTree : MonoBehaviour {
         low.transform.parent = goBranch.transform;
 
         //return go;
-    }
-    public void CreateTree(string structure) {
+    }*/
+    public GameObject CreateTree(string structure, Vector3 treePosition, GameObject goBranch) {
         for (int i = 0; i < structure.Length; i++) {
             //print("Structe length: " + structure.Length);
             string tmpString = structure.Substring(i, 1);
@@ -58,11 +58,13 @@ public class DrawTree : MonoBehaviour {
                         branch.transform.rotation = parent.transform.rotation;    //branch.transform.Rotate(branch.transform.rotation.eulerAngles.x, branch.transform.rotation.eulerAngles.y, rot);
                         branch.transform.position = branch.transform.position + branch.transform.up;
                         branch.transform.parent = parent.transform;
+                        branch.name = "EndBranch";
                         GameObject leaf = GameObject.CreatePrimitive(PrimitiveType.Cube);
                         leaf.transform.localScale /= 2;
                         //leaf.transform.position = branch.transform.position;
                         leaf.transform.position = branch.transform.FindChild("TopPos").position;
-
+                        //leaf.transform.position = leaf.transform.position + new Vector3(0, leaf.transform.localScale.y,0) ;
+                        leaf.name = "Leaf";
                         leaf.transform.rotation = branch.transform.rotation;
                         //leaf.transform.position += (leaf.transform.up);
                         leaf.transform.parent = branch.transform;
@@ -75,9 +77,13 @@ public class DrawTree : MonoBehaviour {
                 case "1":
                     {
                         GameObject branch = GameObject.Instantiate(goBranch) as GameObject; //GameObject branch = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+                        branch.name = "Branch";
                         if (parent == null) { //Used first time as parent is empty
                             parent = branch.gameObject;
                             branch.tag = "Tree";
+                            branch.name = "Tree";
+                            branch.transform.position = treePosition;
+                            //parent.transform.position = treePosition;
                         }
                         //branch.transform.position = parent.transform.position + offset;
                         //branch.transform.Rotate(branch.transform.rotation.eulerAngles.x, branch.transform.rotation.eulerAngles.y, branch.transform.rotation.eulerAngles.z);
@@ -137,6 +143,11 @@ public class DrawTree : MonoBehaviour {
             }
         }
         totalTree = GameObject.FindGameObjectWithTag("Tree");
+        //DestroyImmediate(GameObject.FindWithTag("Source").gameObject);
+        parent = null;
+        angleHasChanged = false;
+        //Debug.Log("Splitparents should be 0: " + splitParents.Count + " and currentpushes should be 0: "  + currentPushes);
+        return totalTree;
     }
 }
 public class ParentAtSplit : MonoBehaviour{

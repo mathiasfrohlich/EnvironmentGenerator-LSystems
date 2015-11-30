@@ -28,6 +28,9 @@ public class PersonalLSystem : MonoBehaviour {
 	    
 	}
     public string CreateTreeStructure() {
+        axiom = "0";
+        rule1 = "11"; //if number is 1 -> 11
+        rule2 = "1[0]0"; //if number is 0 -> 1[0]0
         for (int i = 0; i < recur; i++) { //Runs the number of chosen iterations
             string tmpAxiom = "";
             for (int j = 0; j < axiom.Length; j++) { //Runs dependend on the size of current tree

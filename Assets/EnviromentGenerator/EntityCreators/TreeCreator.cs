@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class TreeCreator : EntityCreator{
 
@@ -7,6 +8,18 @@ public class TreeCreator : EntityCreator{
     private DrawTree _drawTree;
     //private GameObject totalTree;
     private GameObject goBranch;
+
+    public override void setUp()
+    {
+        throw new NotImplementedException();
+    }
+    public override void tearDown()
+    {
+        foreach (GameObject go in GameObject.FindGameObjectsWithTag("Source")) {
+            DestroyImmediate(go);
+        }
+        //throw new NotImplementedException();
+    }
 
     public override GameObject create (Vector3 position)
 	{

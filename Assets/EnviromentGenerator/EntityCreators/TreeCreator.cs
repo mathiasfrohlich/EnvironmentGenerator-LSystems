@@ -11,7 +11,7 @@ public class TreeCreator : EntityCreator{
 
     public override void setUp()
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
     public override void tearDown()
     {

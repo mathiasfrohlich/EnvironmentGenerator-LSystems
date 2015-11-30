@@ -59,12 +59,14 @@ public class DrawTree : MonoBehaviour {
                         branch.transform.position = branch.transform.position + branch.transform.up;
                         branch.transform.parent = parent.transform;
                         branch.name = "EndBranch";
+                        branch.tag = "Untagged";
                         GameObject leaf = GameObject.CreatePrimitive(PrimitiveType.Cube);
                         leaf.transform.localScale /= 2;
                         //leaf.transform.position = branch.transform.position;
                         leaf.transform.position = branch.transform.FindChild("TopPos").position;
                         //leaf.transform.position = leaf.transform.position + new Vector3(0, leaf.transform.localScale.y,0) ;
                         leaf.name = "Leaf";
+                        leaf.tag = "Untagged";
                         leaf.transform.rotation = branch.transform.rotation;
                         //leaf.transform.position += (leaf.transform.up);
                         leaf.transform.parent = branch.transform;
@@ -78,6 +80,7 @@ public class DrawTree : MonoBehaviour {
                     {
                         GameObject branch = GameObject.Instantiate(goBranch) as GameObject; //GameObject branch = GameObject.CreatePrimitive(PrimitiveType.Capsule);
                         branch.name = "Branch";
+                        branch.tag = "Untagged";
                         if (parent == null) { //Used first time as parent is empty
                             parent = branch.gameObject;
                             branch.tag = "Tree";

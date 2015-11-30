@@ -217,17 +217,17 @@ public class EnvironmentGenerator : MonoBehaviour {
 				
 				if(map[y][x] == 1){
 					if(greenEntity != null){
-						gereratedGameObject = greenEntity.create(cordinates[y][x]);
+						greenEntity.setUp(cordinates[y][x]);
 					}
 				}
 				else if(map[y][x] == 2){
 					if(yellowEntity != null){
-						gereratedGameObject = yellowEntity.create(cordinates[y][x]);
+						yellowEntity.setUp(cordinates[y][x]);
 					}
 				}
 				else if(map[y][x] == 3){
 					if(blueEntity != null){
-						gereratedGameObject = blueEntity.create(cordinates[y][x]);
+						blueEntity.setUp(cordinates[y][x]);
 					}
 				}
 			}
@@ -273,17 +273,17 @@ public class EnvironmentGenerator : MonoBehaviour {
 
 				if(map[y][x] == 1){
 					if(greenEntity != null){
-						gereratedGameObject = greenEntity.create(cordinates[y][x]);
+						greenEntity.tearDown(cordinates[y][x]);
 					}
 				}
 				else if(map[y][x] == 2){
 					if(yellowEntity != null){
-						gereratedGameObject = yellowEntity.create(cordinates[y][x]);
+						yellowEntity.tearDown(cordinates[y][x]);
 					}
 				}
 				else if(map[y][x] == 3){
 					if(blueEntity != null){
-						gereratedGameObject = blueEntity.create(cordinates[y][x]);
+						blueEntity.tearDown(cordinates[y][x]);
 					}
 				}
 			}

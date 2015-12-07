@@ -40,10 +40,7 @@ public class EnvironmentGenerator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
-
-
-
+		
 	}
 
 	public void initMap(int xSize, int ySize){

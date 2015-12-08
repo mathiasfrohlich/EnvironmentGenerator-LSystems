@@ -14,6 +14,7 @@ public class DrawTree : MonoBehaviour {
     private bool angleHasChanged = false;
     private PersonalLSystem _personalSystem;
     private Vector3 offset = new Vector3(0, 1, 0);
+    private bool initTree = false;
     //private GameObject goBranch;
 	// Use this for initialization
 	/*void Start () {
@@ -88,6 +89,7 @@ public class DrawTree : MonoBehaviour {
                             branch.tag = "Tree";
                             branch.name = "Tree";
                             branch.transform.position = treePosition;
+                            initTree = true;
                             //parent.transform.position = treePosition;
                         }
                         //branch.transform.position = parent.transform.position + offset;
@@ -102,7 +104,10 @@ public class DrawTree : MonoBehaviour {
                         else {
                             branch.transform.rotation = parent.transform.rotation;
                         }
-                        branch.transform.position = parent.transform.FindChild("TopPos").position + branch.transform.up*branch.transform.localScale.y;
+                        if (!initTree)
+                        {
+                            branch.transform.position = parent.transform.FindChild("TopPos").position + branch.transform.up * branch.transform.localScale.y;
+                        }
                         //branch.transform.position = new Vector3(parent.transform.position.x, parent.transform.position.y, parent.transform.position.z); //+1 is height of capsulecoliider (get height if nessesary)
                         //Debug.DrawRay(branch.transform.position, );
                         Debug.DrawLine(branch.transform.position, branch.transform.position+ parent.transform.up, Color.green, 10);
@@ -110,6 +115,8 @@ public class DrawTree : MonoBehaviour {
                         //branch.transform.Translate((branch.transform.up));
                         branch.transform.parent = parent.transform;
                         parent = branch.gameObject;
+                        if (initTree)
+                            initTree = false;
                         break;
                     }
                 case "[":

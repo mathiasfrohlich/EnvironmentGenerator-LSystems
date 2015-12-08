@@ -88,7 +88,7 @@ public class DrawTree : MonoBehaviour {
                             parent = branch.gameObject;
                             branch.tag = "Tree";
                             branch.name = "Tree";
-                            branch.transform.position = treePosition;
+                            branch.transform.position = treePosition + branch.transform.up*2;
                             initTree = true;
                             //parent.transform.position = treePosition;
                         }
@@ -104,7 +104,7 @@ public class DrawTree : MonoBehaviour {
                         else {
                             branch.transform.rotation = parent.transform.rotation;
                         }
-                        if (!initTree)
+                        if (!initTree) //Sets the position if not the first tree  - then we set the position in the if-statement with null parent
                         {
                             branch.transform.position = parent.transform.FindChild("TopPos").position + branch.transform.up * branch.transform.localScale.y;
                         }

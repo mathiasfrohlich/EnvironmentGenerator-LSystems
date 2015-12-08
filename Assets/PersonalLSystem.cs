@@ -8,7 +8,7 @@ public class PersonalLSystem{
     private List<string> constants = new List<string>();
     public string axiom;
     private string rule1, rule2;
-    private int recur = 2; //TODO: value zero gives nullref as parent is null, fix
+    private int recur = 4; //TODO: value zero gives nullref as parent is null, fix
 
     //private List<string> totalTreeForm = new List<string>();
     // Use this for initialization
@@ -30,7 +30,8 @@ public class PersonalLSystem{
     public string CreateTreeStructure() {
         axiom = "0";
         rule1 = "1"; //if number is 1 -> 11
-        rule2 = "1[10]10[10[10][10]]10"; //if number is 0 -> 1[0]0         (X → F−[[X]+X]+F[+FX]−X), (F → FF)
+        //rule2 = "1[10]10[10[10][10]]10"; //if number is 0 -> 1[0]0         (X → F−[[X]+X]+F[+FX]−X), (F → FF)
+        rule2 = "1[0][0]10";
         for (int i = 0; i < recur; i++) { //Runs the number of chosen iterations
             string tmpAxiom = "";
             //rule2 += "[0]0]"; //adds another branching each generation

@@ -5,6 +5,8 @@ using System.Collections.Generic;
 public class EnvironmentGenerator : MonoBehaviour {
 
 	public bool showGrid = true;
+	
+	public MapFiller mapFiller;
 
 	public int sizeX = 10;
 	public int sizeY = 10;
@@ -67,11 +69,12 @@ public class EnvironmentGenerator : MonoBehaviour {
 	}
 
 	public void fillRandom(List<List<int>> map){
-		for(int y = 0 ; y < map.Count ; y ++){
-			for(int x = 0 ; x < map[y].Count ; x ++){	
-				map[y][x] = (int)Random.Range(0.0f,3.99f);	
-			}
-		}
+		// for(int y = 0 ; y < map.Count ; y ++){
+		// 	for(int x = 0 ; x < map[y].Count ; x ++){	
+		// 		map[y][x] = (int)Random.Range(0.0f,3.99f);	
+		// 	}
+		// }
+		map = mapFiller.fill(map);
 	}
 
 	void OnDrawGizmos() {

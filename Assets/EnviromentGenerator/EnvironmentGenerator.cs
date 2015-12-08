@@ -238,8 +238,8 @@ public class EnvironmentGenerator : MonoBehaviour {
 				}
 				if(gereratedGameObject != null){
 					gereratedGameObject.transform.parent = parent.transform;
-					float size = (2.0f / ( (sizeX+sizeY)/2) + (Vector3.Distance(control1Obj.transform.position,control2Obj.transform.position)/((sizeX+sizeY)*2))) + 0.0f;
-					gereratedGameObject.transform.localScale = new Vector3(size,size,size);
+					//float size = (2.0f / ( (sizeX+sizeY)/2) + (Vector3.Distance(control1Obj.transform.position,control2Obj.transform.position)/((sizeX+sizeY)*2))) + 0.0f;
+					//gereratedGameObject.transform.localScale = new Vector3(size,size,size);
 				}
 
 			}

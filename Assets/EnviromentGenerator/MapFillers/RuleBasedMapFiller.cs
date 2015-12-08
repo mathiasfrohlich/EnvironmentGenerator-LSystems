@@ -23,7 +23,7 @@ public class RuleBasedMapFiller : MapFiller
 		
 				if(y > 0 && y < map.Count-1  && x > 0 && x < map[y].Count-1){
 					// Debug.Log(map[y-1][x] + " max:"+Mathf.Max(0,map[y-1][x]-1) + " min:"+Mathf.Min(3+0.99f,map[y-1][x]+1+0.99f));
-					float neightborValue = (map[y-1][x] + map[y+1][x] + map[y][x-1] + map[y][x+1])/4; 
+					//float neightborValue = (map[y-1][x] + map[y+1][x] + map[y][x-1] + map[y][x+1])/4; 
 					//Debug.Log(neightborValue +" "+ map[y-1][x] +" "+ map[y+1][x] +" "+ map[y][x-1] +" "+ map[y][x+1]);
 					
 					//map[y][x] = (int)Random.Range(Mathf.Max(0,neightborValue - 1),Mathf.Min(3+0.99f,neightborValue +1 +0.99f));

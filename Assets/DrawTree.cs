@@ -88,7 +88,7 @@ public class DrawTree{
                             parent = branch.gameObject;
                             branch.tag = "Tree";
                             branch.name = "Tree";
-                            branch.transform.position = treePosition + branch.transform.up*2;
+                            branch.transform.position = treePosition + branch.transform.up;
                             initTree = true;
                             //parent.transform.position = treePosition;
                         }

@@ -42,6 +42,7 @@ public class TreeCreator : EntityCreator{
         //DestroyImmediate(GameObject.FindGameObjectWithTag("Source"));
         
         tmpTree.tag = "Placed Tree";
+        //MergeMesh(tmpTree);
         //tmpTree.transform.localScale.Set(tmpTree.transform.localScale.x*0.5f, tmpTree.transform.localScale.y*0.5f, tmpTree.transform.localScale.z*0.5f);
         //tmpTree.transform.localScale.Scale(new Vector3(1,1,1), new Vector3(0.5f, 0.5f, 0.5f));
         //tmpTree.transform.localScale /= 2;
@@ -50,6 +51,21 @@ public class TreeCreator : EntityCreator{
     void Start()
     {
         
+    }
+    private void MergeMesh(GameObject theTree) {
+        MeshFilter[] meshFilters = theTree.GetComponentsInChildren<MeshFilter>();
+        CombineInstance[] combine = new CombineInstance[meshFilters.Length];
+        int i = 0;
+        while (i < meshFilters.Length)
+        {
+            combine[i].mesh = meshFilters[i].sharedMesh;
+            combine[i].transform = meshFilters[i].transform.localToWorldMatrix;
+            meshFilters[i].gameObject.SetActive(false);
+            i++;
+        }
+        theTree.transform.GetComponent<MeshFilter>().mesh = new Mesh();
+        theTree.transform.GetComponent<MeshFilter>().sharedMesh.CombineMeshes(combine);
+        theTree.transform.gameObject.SetActive(true);
     }
    /* private void CreateBranch()
     {

@@ -1,10 +1,12 @@
 fileFormatVersion: 2
 guid: 3914404d435924b67968cfb4c97e3d0e
-timeCreated: 1448281537
+timeCreated: 1449575595
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - goBranch: {fileID: 144204, guid: 2d6d365f91cae2d42a612a2262afed29, type: 2}
+  - leaf: {fileID: 145200, guid: 9dc7033a31220ac4a8ddb2dd01ed708b, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

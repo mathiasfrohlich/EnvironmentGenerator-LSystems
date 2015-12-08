@@ -6,8 +6,8 @@ public class DrawTree{
 
     private GameObject totalTree;
     private GameObject parent;
-    public int turnDegrees = 45;
-    private int rot = 45, rot2 = 45, rot3 = 45;
+    public int turnDegrees = 25;
+    private int rot = 0, rot2 = 0, rot3 = 0;
     //private List<List<Vector3>> posAndAngle = new List<List<Vector3>>();
     private List<ParentAtSplit> splitParents = new List<ParentAtSplit>();
     private int currentPushes = 0;
@@ -46,7 +46,7 @@ public class DrawTree{
 
         //return go;
     }*/
-    public GameObject CreateTree(string structure, Vector3 treePosition, GameObject goBranch) {
+    public GameObject CreateTree(string structure, Vector3 treePosition, GameObject goBranch, GameObject trueleaf) {
         for (int i = 0; i < structure.Length; i++) {
             //print("Structe length: " + structure.Length);
             string tmpString = structure.Substring(i, 1);
@@ -55,15 +55,15 @@ public class DrawTree{
                 case "0": //Creating a branch with end leaf and assigning them to the parent
                     {
                         GameObject branch = GameObject.Instantiate(goBranch) as GameObject; //GameObject branch = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-                        //branch.transform.localScale /= 2;
+                                                                                            //branch.transform.localScale /= 2;
                         branch.transform.position = parent.transform.FindChild("TopPos").position; //branch.transform.position = parent.transform.position;
                         branch.transform.rotation = parent.transform.rotation;    //branch.transform.Rotate(branch.transform.rotation.eulerAngles.x, branch.transform.rotation.eulerAngles.y, rot);
                         branch.transform.position = parent.transform.position + branch.transform.up;//*branch.transform.localScale.y;
                         branch.transform.parent = parent.transform;
                         branch.name = "EndBranch";
                         branch.tag = "Untagged";
-                        GameObject leaf = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        leaf.transform.localScale /= 5;
+                        GameObject leaf = GameObject.Instantiate(trueleaf) as GameObject;
+                        //leaf.transform.localScale /= 5;
                         //leaf.transform.position = branch.transform.position;
                         leaf.transform.position = branch.transform.FindChild("TopPos").position;
                         //leaf.transform.position = leaf.transform.position + new Vector3(0, leaf.transform.localScale.y,0) ;
@@ -121,10 +121,10 @@ public class DrawTree{
                     }
                 case "[":
                     {
-                        // print("[, pushes: " + currentPushes);
-                        rot = Random.Range(rot-turnDegrees, rot+turnDegrees); //Turn left
-                        rot2 = Random.Range(rot2 - turnDegrees, rot2 + turnDegrees); //Turn y axis
-                        rot3 = Random.Range(rot3 - turnDegrees, rot3 + turnDegrees); //Turn x axis
+                        //Debug.Log("[, pushes: " + currentPushes);
+                        rot = Random.Range(turnDegrees-25, turnDegrees+25); //Turn left
+                        rot2 = Random.Range( turnDegrees-25, rot2 + turnDegrees+25); //Turn y axis
+                        rot3 = Random.Range(turnDegrees-25, turnDegrees+25); //Turn x axis
                         /*List<Vector3> values = new List<Vector3>();
                         values.Add(parent.transform.position); //Stores position
                         values.Add(new Vector3(parent.transform.localEulerAngles.x, parent.transform.localEulerAngles.y, rot)); //Stores rotation*/
@@ -138,7 +138,7 @@ public class DrawTree{
                     }
                 case "]":
                     {
-                        //print("], pushes: " + currentPushes);
+                        //Debug.Log("], pushes: " + currentPushes);
                         splitParents.RemoveAt(currentPushes-1);
                         currentPushes--;
                         rot += rot; //Turn right

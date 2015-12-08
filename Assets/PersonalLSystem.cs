@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class PersonalLSystem : MonoBehaviour {
+public class PersonalLSystem{
 
     private List<string> variables = new List<string>();
     private List<string> constants = new List<string>();
@@ -19,7 +19,7 @@ public class PersonalLSystem : MonoBehaviour {
         constants.Add("]");
         axiom = "0";
         rule1 = "11"; //if number is 1 -> 11
-        rule2 = "1[0]0"; //if number is 0 -> 1[0]0
+        rule2 = "1[0[1]0[1]0]"; //if number is 0 -> 1[0]0
         //CreateTreeStructure();
     }
 	
@@ -64,7 +64,7 @@ public class PersonalLSystem : MonoBehaviour {
             }
             axiom = tmpAxiom;
         }
-        print("Axiom: " + axiom);
+        //print("Axiom: " + axiom);
         return axiom;
     }
 }

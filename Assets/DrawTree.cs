@@ -2,12 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class DrawTree : MonoBehaviour {
+public class DrawTree{
 
     private GameObject totalTree;
     private GameObject parent;
-    public int turnDegrees = 30;
-    private int rot = 30, rot2 = 30, rot3 = 30;
+    public int turnDegrees = 45;
+    private int rot = 45, rot2 = 45, rot3 = 45;
     //private List<List<Vector3>> posAndAngle = new List<List<Vector3>>();
     private List<ParentAtSplit> splitParents = new List<ParentAtSplit>();
     private int currentPushes = 0;
@@ -63,7 +63,7 @@ public class DrawTree : MonoBehaviour {
                         branch.name = "EndBranch";
                         branch.tag = "Untagged";
                         GameObject leaf = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        leaf.transform.localScale /= 2;
+                        leaf.transform.localScale /= 5;
                         //leaf.transform.position = branch.transform.position;
                         leaf.transform.position = branch.transform.FindChild("TopPos").position;
                         //leaf.transform.position = leaf.transform.position + new Vector3(0, leaf.transform.localScale.y,0) ;
@@ -162,7 +162,7 @@ public class DrawTree : MonoBehaviour {
         return totalTree;
     }
 }
-public class ParentAtSplit : MonoBehaviour{
+public class ParentAtSplit{
     public GameObject splitParent;
     public Vector3 rot;
 }

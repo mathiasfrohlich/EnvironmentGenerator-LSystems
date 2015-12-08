@@ -12,6 +12,7 @@ public class PureRandomMapFiller : MapFiller {
 				map[y][x] = (int)Random.Range(0.0f,3.99f);	
 			}
 		}
+		Debug.Log("Pure Random Map filler");
 		return map;
     }
 }

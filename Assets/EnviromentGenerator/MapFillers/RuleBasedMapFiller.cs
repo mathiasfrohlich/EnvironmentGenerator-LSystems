@@ -45,7 +45,7 @@ public class RuleBasedMapFiller : MapFiller
 				}
 			}
 		}
-		Debug.Log("Build Rule based random");
+		Debug.Log("Rule based Map filler");
 		return map;
     }
 }

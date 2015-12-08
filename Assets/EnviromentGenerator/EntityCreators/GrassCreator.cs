@@ -9,6 +9,8 @@ public class GrassCreator : EntityCreator{
 	{
 
 		GameObject grassEntity = Instantiate(DefaultGrass,position,new Quaternion()) as GameObject;
+		
+		
 
 		grassEntity.name = "GrassEntity";
 

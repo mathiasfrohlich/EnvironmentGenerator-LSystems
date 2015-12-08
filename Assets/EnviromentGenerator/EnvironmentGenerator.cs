@@ -11,11 +11,13 @@ public class EnvironmentGenerator : MonoBehaviour {
 	public int sizeX = 10;
 	public int sizeY = 10;
 	
+	public EntityCreator greenEntity;
+	
 	public EntityCreator yellowEntity;
 
 	public EntityCreator blueEntity;
 
-	public EntityCreator greenEntity;
+
 
 	
 	public List<List<int>> map;
@@ -228,7 +230,7 @@ public class EnvironmentGenerator : MonoBehaviour {
 				else if(map[y][x] == 3){
 					if(blueEntity != null){
 						gereratedGameObject = blueEntity.create(cordinates[y][x]);
-						gereratedGameObject.GetComponent<Renderer>().material.color = Color.blue;
+						//gereratedGameObject.GetComponent<Renderer>().material.color = Color.blue;
 					}
 				}
 				else{

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 public class TreeCreator : EntityCreator{
 
@@ -55,14 +56,28 @@ public class TreeCreator : EntityCreator{
     private void MergeMesh(GameObject theTree) {
         MeshFilter[] meshFilters = theTree.GetComponentsInChildren<MeshFilter>();
         CombineInstance[] combine = new CombineInstance[meshFilters.Length];
+        List<Material> mats = new List<Material>(); 
         int i = 0;
         while (i < meshFilters.Length)
         {
             combine[i].mesh = meshFilters[i].sharedMesh;
             combine[i].transform = meshFilters[i].transform.localToWorldMatrix;
             meshFilters[i].gameObject.SetActive(false);
+            Material mat = meshFilters[i].gameObject.GetComponent<MeshRenderer>().sharedMaterial;
+            if (!mats.Contains(mat))
+                mats.Add(mat);
             i++;
         }
+        /*GameObject newTree = new GameObject("CombinedTree");
+        Mesh combinedMesh = new Mesh();
+        combinedMesh.CombineMeshes(combine, (mats.Count>1));
+        MeshFilter filter = newTree.AddComponent<MeshFilter>();
+        filter.mesh = combinedMesh;
+        MeshRenderer renderer = newTree.AddComponent<MeshRenderer>();
+        renderer.sharedMaterials = mats.ToArray();
+        return newTree;*/
+        //newTree.GetComponent<MeshFilter>().sharedMesh.;
+
         theTree.transform.GetComponent<MeshFilter>().mesh = new Mesh();
         theTree.transform.GetComponent<MeshFilter>().sharedMesh.CombineMeshes(combine);
         theTree.transform.gameObject.SetActive(true);

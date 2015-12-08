@@ -54,9 +54,10 @@ public class DrawTree : MonoBehaviour {
                 case "0": //Creating a branch with end leaf and assigning them to the parent
                     {
                         GameObject branch = GameObject.Instantiate(goBranch) as GameObject; //GameObject branch = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+                        //branch.transform.localScale /= 2;
                         branch.transform.position = parent.transform.FindChild("TopPos").position; //branch.transform.position = parent.transform.position;
                         branch.transform.rotation = parent.transform.rotation;    //branch.transform.Rotate(branch.transform.rotation.eulerAngles.x, branch.transform.rotation.eulerAngles.y, rot);
-                        branch.transform.position = branch.transform.position + branch.transform.up;
+                        branch.transform.position = parent.transform.position + branch.transform.up;//*branch.transform.localScale.y;
                         branch.transform.parent = parent.transform;
                         branch.name = "EndBranch";
                         branch.tag = "Untagged";
@@ -79,6 +80,7 @@ public class DrawTree : MonoBehaviour {
                 case "1":
                     {
                         GameObject branch = GameObject.Instantiate(goBranch) as GameObject; //GameObject branch = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+                        //branch.transform.localScale /= 2;
                         branch.name = "Branch";
                         branch.tag = "Untagged";
                         if (parent == null) { //Used first time as parent is empty
@@ -100,11 +102,11 @@ public class DrawTree : MonoBehaviour {
                         else {
                             branch.transform.rotation = parent.transform.rotation;
                         }
-                        branch.transform.position = parent.transform.FindChild("TopPos").position;
+                        branch.transform.position = parent.transform.FindChild("TopPos").position + branch.transform.up*branch.transform.localScale.y;
                         //branch.transform.position = new Vector3(parent.transform.position.x, parent.transform.position.y, parent.transform.position.z); //+1 is height of capsulecoliider (get height if nessesary)
                         //Debug.DrawRay(branch.transform.position, );
                         Debug.DrawLine(branch.transform.position, branch.transform.position+ parent.transform.up, Color.green, 10);
-                        branch.transform.position += branch.transform.up;
+                        //branch.transform.position += parent.transform.up * parent.transform.localScale.y;
                         //branch.transform.Translate((branch.transform.up));
                         branch.transform.parent = parent.transform;
                         parent = branch.gameObject;

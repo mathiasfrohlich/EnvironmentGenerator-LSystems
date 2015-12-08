@@ -7,7 +7,7 @@ public class TreeCreator : EntityCreator{
     private PersonalLSystem _personalSystem;
     private DrawTree _drawTree;
     //private GameObject totalTree;
-    private GameObject goBranch;
+    public GameObject goBranch;
 
 
     public override void setUp()
@@ -29,9 +29,8 @@ public class TreeCreator : EntityCreator{
         //DrawTree
         //totalTree = new GameObject();
         //_personalSystem = gameObject.GetComponent<PersonalLSystem>();
-        goBranch = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-        CreateBranch();
-
+        //goBranch = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+        //CreateBranch();
         Debug.Log("Create Tree");
         /*GameObject capsule = GameObject.CreatePrimitive(PrimitiveType.Capsule);
 		capsule.transform.position = position;*/
@@ -45,13 +44,14 @@ public class TreeCreator : EntityCreator{
         tmpTree.tag = "Placed Tree";
         //tmpTree.transform.localScale.Set(tmpTree.transform.localScale.x*0.5f, tmpTree.transform.localScale.y*0.5f, tmpTree.transform.localScale.z*0.5f);
         //tmpTree.transform.localScale.Scale(new Vector3(1,1,1), new Vector3(0.5f, 0.5f, 0.5f));
+        //tmpTree.transform.localScale /= 2;
         return tmpTree;
     }
     void Start()
     {
         
     }
-    private void CreateBranch()
+   /* private void CreateBranch()
     {
         GameObject top = new GameObject();
         GameObject low = new GameObject();
@@ -63,5 +63,5 @@ public class TreeCreator : EntityCreator{
         top.transform.parent = goBranch.transform;
         low.transform.parent = goBranch.transform;
         goBranch.tag = "Source";
-    }
+    }*/
 }

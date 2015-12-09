@@ -21,7 +21,7 @@ public class WeightedMapFiller : MapFiller {
 				map[y][x] = getNumber(randomNumber);	
 			}
 		}
-		Debug.Log("Weighte Map filler");
+		//Debug.Log("Weighte Map filler");
 		return map;
     }
 	private int getNumber(float randomNumber){

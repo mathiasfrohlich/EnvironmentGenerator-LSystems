@@ -32,7 +32,7 @@ public class TreeCreator : EntityCreator{
         //_personalSystem = gameObject.GetComponent<PersonalLSystem>();
         //goBranch = GameObject.CreatePrimitive(PrimitiveType.Capsule);
         //CreateBranch();
-        Debug.Log("Create Tree");
+        //Debug.Log("Create Tree");
         /*GameObject capsule = GameObject.CreatePrimitive(PrimitiveType.Capsule);
 		capsule.transform.position = position;*/
         /*if (totalTree != null)

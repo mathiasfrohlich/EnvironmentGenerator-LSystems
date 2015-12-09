@@ -63,7 +63,7 @@ public class EnvironmentGenerator : MonoBehaviour {
 		string s = "";
 		for(int y = 0 ; y < map.Count ; y ++){
 			for(int x = 0 ; x < map[y].Count ; x ++){	
-				s =  s + map[y][x].ToString();	
+				s =  s + map[y][x].ToString() + ";";	
 			}
 			s = s + "\n";
 		}

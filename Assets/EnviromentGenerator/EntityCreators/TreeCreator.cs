@@ -9,6 +9,8 @@ public class TreeCreator : EntityCreator{
     private DrawTree _drawTree;
     //private GameObject totalTree;
     public GameObject goBranch, leaf;
+    public int LevelOfDetail;
+    public int StartAngle, AngleDeviation;
 
 
     public override void setUp()
@@ -39,7 +41,7 @@ public class TreeCreator : EntityCreator{
             DestroyImmediate(totalTree);*/
         //CreateTree(_personalSystem.CreateTreeStructure());
         //_personalSystem.axiom = "0";
-        GameObject tmpTree = _drawTree.CreateTree(_personalSystem.CreateTreeStructure(), position, goBranch, leaf);
+        GameObject tmpTree = _drawTree.CreateTree(_personalSystem.CreateTreeStructure(LevelOfDetail), position, goBranch, leaf, StartAngle, AngleDeviation);
         //DestroyImmediate(GameObject.FindGameObjectWithTag("Source"));
         
         tmpTree.tag = "Placed Tree";

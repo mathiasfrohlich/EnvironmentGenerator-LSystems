@@ -27,7 +27,8 @@ public class PersonalLSystem{
 	void Update () {
 	    
 	}
-    public string CreateTreeStructure() {
+    public string CreateTreeStructure(int detail) {
+        recur = detail;
         axiom = "0";
         rule1 = "1"; //if number is 1 -> 11
         //rule2 = "1[10]10[10[10][10]]10"; //if number is 0 -> 1[0]0         (X → F−[[X]+X]+F[+FX]−X), (F → FF)

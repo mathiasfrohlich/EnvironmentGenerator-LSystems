@@ -32,7 +32,8 @@ public class PersonalLSystem{
         axiom = "0";
         rule1 = "1"; //if number is 1 -> 11
         //rule2 = "1[10]10[10[10][10]]10"; //if number is 0 -> 1[0]0         (X → F−[[X]+X]+F[+FX]−X), (F → FF)
-        rule2 = "1[0][0]10";
+        //rule2 = "1[0][0]10";
+        rule2 = "1[0]0";
         for (int i = 0; i < recur; i++) { //Runs the number of chosen iterations
             string tmpAxiom = "";
             //rule2 += "[0]0]"; //adds another branching each generation
@@ -65,8 +66,9 @@ public class PersonalLSystem{
                 }
             }
             axiom = tmpAxiom;
+            Debug.Log("Axiom: " + axiom + " Iteration: " + i);
         }
-        //print("Axiom: " + axiom);
+        //Debug.Log("Axiom: " + axiom);
         return axiom;
     }
 }

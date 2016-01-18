@@ -5,13 +5,13 @@ using System.Collections.Generic;
 public class WeightedMapFiller : MapFiller {
 
 	[Range(0, 100)]
-	public int nothingWeigth;
+	public int nothingWeigth = 10;
 	[Range(0, 100)]
-	public int greenWeigth;
+	public int greenWeigth = 100;
 	[Range(0, 100)]
-	public int yellowWeigth;
+	public int yellowWeigth = 3;
 	[Range(0, 100)]
-	public int blueWeigth;
+	public int blueWeigth = 33;
 
     public override List<List<int>> fill(List<List<int>> map)
     {

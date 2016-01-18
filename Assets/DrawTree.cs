@@ -6,7 +6,7 @@ public class DrawTree{
 
     private GameObject totalTree;
     private GameObject parent;
-    public int turnDegrees = 25;
+    private int turnDegrees = 25, turnDeviation;
     private int rot = 0, rot2 = 0, rot3 = 0;
     //private List<List<Vector3>> posAndAngle = new List<List<Vector3>>();
     private List<ParentAtSplit> splitParents = new List<ParentAtSplit>();
@@ -46,7 +46,9 @@ public class DrawTree{
 
         //return go;
     }*/
-    public GameObject CreateTree(string structure, Vector3 treePosition, GameObject goBranch, GameObject trueleaf) {
+    public GameObject CreateTree(string structure, Vector3 treePosition, GameObject goBranch, GameObject trueleaf, int startAngle, int deviation) {
+        turnDegrees = startAngle;
+        turnDeviation = deviation / 2;
         for (int i = 0; i < structure.Length; i++) {
             //print("Structe length: " + structure.Length);
             string tmpString = structure.Substring(i, 1);
@@ -122,9 +124,9 @@ public class DrawTree{
                 case "[":
                     {
                         //Debug.Log("[, pushes: " + currentPushes);
-                        rot = Random.Range(turnDegrees-25, turnDegrees+25); //Turn left
-                        rot2 = Random.Range( turnDegrees-25, rot2 + turnDegrees+25); //Turn y axis
-                        rot3 = Random.Range(turnDegrees-25, turnDegrees+25); //Turn x axis
+                        rot = Random.Range(turnDegrees- turnDeviation, turnDegrees+ turnDeviation); //Turn left
+                        rot2 = Random.Range( turnDegrees- turnDeviation, rot2 + turnDegrees+ turnDeviation); //Turn y axis
+                        rot3 = Random.Range(turnDegrees- turnDeviation, turnDegrees+ turnDeviation); //Turn x axis
                         /*List<Vector3> values = new List<Vector3>();
                         values.Add(parent.transform.position); //Stores position
                         values.Add(new Vector3(parent.transform.localEulerAngles.x, parent.transform.localEulerAngles.y, rot)); //Stores rotation*/
